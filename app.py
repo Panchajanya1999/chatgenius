@@ -36,4 +36,4 @@ demo = gr.Interface(
     description = "Enter a prompt and the chatbot will generate a response.",
     theme=gr.themes.Monochrome()
 )
-demo.launch(share=True)
+demo.launch(share=False)
