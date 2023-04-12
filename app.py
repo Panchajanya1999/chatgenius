@@ -22,6 +22,7 @@ system = ("Act like you are a chatbot. Be precise and unique with your answers."
 # setup a function that accepts propmpt and returns a response using "gpt-3.5-turbo" model
 
 def chatbot(prompt, temperature = 0.2, developer_mode = False):
+    system_message = developer_msg if developer_mode else system
     response = opai.ChatCompletion.create(
         model = "gpt-3.5-turbo",
         max_tokens = 1024,
@@ -29,7 +30,7 @@ def chatbot(prompt, temperature = 0.2, developer_mode = False):
         frequency_penalty = 0,
         presence_penalty = 0.6,
         messages = [
-            {"role": "system", "content": developer_msg if developer_mode else system},
+            {"role": "system", "content": system_message},
             {"role": "user", "content": prompt}
 ]
     )
